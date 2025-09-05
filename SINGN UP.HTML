@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Zone Gym - Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #FFC0CB, #FF69B4, #DA70D6);
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 450px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gym-logo {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-align: center;
+            color: #FF69B4;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .signup-form h2 {
+            color: #FF69B4;
+            margin-bottom: 30px;
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            border-color: #FF69B4;
+            box-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+            outline: none;
+        }
+        
+        .btn-signup {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(to right, #FFC0CB, #FF69B4, #DA70D6);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .btn-signup:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+        
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+        
+        .login-link a {
+            color: #FF69B4;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            color: #FF69B4;
+            font-weight: 600;
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: rgba(255, 192, 203, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="gym-logo">Energy Zone Gym</div>
+        <form class="signup-form" id="signupForm">
+            <h2>Create Your Account</h2>
+            
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="membershipType">Membership Type</label>
+                <select id="membershipType" required>
+                    <option value="">Select Membership</option>
+                    <option value="basic">Basic (Access to gym only)</option>
+                    <option value="premium">Premium (Gym + Classes)</option>
+                    <option value="platinum">Platinum (All Inclusive)</option>
+                </select>
+            </div>
+            
+            <a href="pre.html" type="submit" class="btn-signup">Sign Up Now</a>
+            
+            <div class="success-message" id="successMessage">
+                Registration successful! Welcome to Energy Zone Gym.
+            </div>
+            
+            <div class="login-link">
+                Already have an account? <a href="login.html">Log in here</a>
+            </div>
+        </form>
+    </div>
+    
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            const membershipType = document.getElementById('membershipType').value;
+            
+            if (fullName && email && phone && password && membershipType) {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+                
+                // Reset form after 3 seconds
+                setTimeout(() => {
+                    document.getElementById('signupForm').reset();
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 3000);
+            }
+        });
+    </script>
+</body>
+</html>
