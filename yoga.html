@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Peaceful Path Yoga</title>
+    <style>
+        :root {
+            --peach-light: #FFE4E1;
+            --peach: #FFB6C1;
+            --pink: #FF69B4;
+            --purple-light: #DDA0DD;
+            --purple: #BA55D3;
+            --text-dark: #4A4158;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: var(--peach-light);
+            color: var(--text-dark);
+        }
+
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.9), rgba(186, 85, 211, 0.8)),
+                        url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem;
+            box-shadow: 0 2px 10px rgba(186, 85, 211, 0.2);
+            z-index: 1000;
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 3rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--purple);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--pink);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .classes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .class-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(186, 85, 211, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .class-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .class-content {
+            padding: 1.5rem;
+        }
+
+        .benefits {
+            background: linear-gradient(135deg, var(--peach), var(--purple-light));
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: var(--text-dark);
+        }
+
+        .schedule {
+            background: white;
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .day-card {
+            background: var(--peach-light);
+            padding: 1.5rem;
+            border-radius: 15px;
+        }
+
+        .instructor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .instructor-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(186, 85, 211, 0.1);
+        }
+
+        .instructor-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .instructor-info {
+            padding: 1.5rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--pink), var(--purple));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        h2 {
+            text-align: center;
+            background: linear-gradient(45deg, var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .benefits h2 {
+            color: white;
+            -webkit-text-fill-color: white;
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, var(--purple-light), var(--peach));
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        footer {
+            background: var(--purple);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Rest of the HTML remains the same as in the previous version -->
+    <nav class="nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#classes">Classes</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#instructors">Instructors</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero" id="home">
+        <div class="hero-content">
+            <h1>Find Your Inner Peace</h1>
+            <p>Join our mindful community and transform your body, mind, and spirit</p>
+            <a href="#classes" class="button">Explore Classes</a>
+        </div>
+    </div>
+
+    <section id="classes" class="section">
+        <div class="container">
+            <h2>Our Classes</h2>
+            <div class="classes-grid">
+                <div class="class-card">
+                    <div class="class-image" style="background-image: url('https://media.istockphoto.com/id/1131220731/photo/photo-of-a-young-man-stock-image.jpg?s=612x612&w=0&k=20&c=Ia7Khkre1FBQQCPGsn7XW1617vfWGcYSUtAHaRvjtJw=')"></div>
+                    <div class="class-content">
+                        <h3>Hatha Yoga</h3>
+                        <p>Perfect for beginners, focusing on basic postures and breathing techniques.</p>
+                    </div>
+                </div>
+                <div class="class-card">
+                    <div class="class-image" style="background-image: url('https://media.istockphoto.com/id/1329506195/photo/nothing-is-ever-a-stretch-too-far-for-her.jpg?s=612x612&w=0&k=20&c=qaxSw-0b--ORYTjH8XlKjNIf5DWWlvJn5lmR3xR_Aos=')"></div>
+                    <div class="class-content">
+                        <h3>Vinyasa Flow</h3>
+                        <p>Dynamic sequences linking breath with movement for strength and flexibility.</p>
+                    </div>
+                </div>
+                <div class="class-card">
+                    <div class="class-image" style="background-image: url('https://media.istockphoto.com/id/1442079347/photo/young-yoga-teacher.jpg?s=612x612&w=0&k=20&c=eZ7uwglDz9WUsdtl1cop2-e03DyxCy9NopxTru6QcH0=')"></div>
+                    <div class="class-content">
+                        <h3>Yin Yoga</h3>
+                        <p>Deep stretching and meditation for ultimate relaxation and flexibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="section benefits">
+        <div class="container">
+            <h2>Benefits of Practice</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>Stress Relief</h3>
+                    <p>Release tension and find mental clarity through mindful movement and breathing.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Flexibility</h3>
+                    <p>Improve your range of motion and prevent injuries through gentle stretching.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Strength</h3>
+                    <p>Build core strength and stability through balanced poses and sequences.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>Inner Peace</h3>
+                    <p>Develop mindfulness and emotional balance through meditation practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="section schedule">
+        <div class="container">
+            <h2>Class Schedule</h2>
+            <div class="schedule-grid">
+                <div class="day-card">
+                    <h3>Weekdays</h3>
+                    <ul>
+                        <li>6:00 AM - Morning Flow</li>
+                        <li>9:00 AM - Gentle Yoga</li>
+                        <li>5:30 PM - Power Yoga</li>
+                        <li>7:00 PM - Yin Yoga</li>
+                    </ul>
+                </div>
+                <div class="day-card">
+                    <h3>Weekends</h3>
+                    <ul>
+                        <li>8:00 AM - Vinyasa Flow</li>
+                        <li>10:00 AM - Beginners Yoga</li>
+                        <li>4:00 PM - Meditation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instructors" class="section">
+        <div class="container">
+            <h2>Our Instructors</h2>
+            <div class="instructor-grid">
+                <div class="instructor-card">
+                    <div class="instructor-image" style="background-image: url('https://media.istockphoto.com/id/1311460201/photo/beautiful-blond-smiling-female-yoga-instructor.jpg?s=612x612&w=0&k=20&c=2GEEf-xayVJJWoGYpnuazS2MRzf387Ssbj4XWbP0ahc=')"></div>
+                    <div class="instructor-info">
+                        <h3>Hasana</h3>
+                        <p>Vinyasa & Meditation Specialist</p>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <div class="instructor-image" style="background-image: url('https://media.istockphoto.com/id/1483989790/photo/adult-indian-male-yoga-instructor-smiling-at-the-camera-and-holding-a-yoga-mat-under-his-arm.jpg?s=612x612&w=0&k=20&c=vZZ1--vZ_LF612IrI7jXBBxdG5fExnOO3rYu-uHAtiM=')"></div>
+                    <div class="instructor-info">
+                        <h3>David Chen</h3>
+                        <p>Hatha & Yin Yoga Expert</p>
+                    </div>
+                </div>
+                <div class="instructor-card">
+                    <div class="instructor-image" style="background-image: url('https://media.istockphoto.com/id/700722040/photo/happy-mature-woman-with-a-yoga-mat-in-health-club.jpg?s=612x612&w=0&k=20&c=g6MvVJ-aJ7PqfIjs9S0iUuu_TChtlJA7LQFwrBpjEtQ=')"></div>
+                    <div class="instructor-info">
+                        <h3>Emma Wilson</h3>
+                        <p>Power Yoga Instructor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section testimonials">
+        <div class="container">
+            <h2>Student Testimonials</h2>
+            <div class="testimonial-card">
+                <p class="quote">"Finding this yoga studio has been life-changing. The instructors are knowledgeable and supportive, and the peaceful atmosphere helps me disconnect from daily stress."</p>
+                <p>- Maria S.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Peaceful Path Yoga © 2025 | All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
