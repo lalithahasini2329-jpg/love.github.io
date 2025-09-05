@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Assessment Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffd1d1, #e6a8e8, #d5a6e6);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            color: #5b2e8f;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #6d3aa3;
+            font-size: 1.2rem;
+        }
+
+        .assessment-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .assessment-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .assessment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .assessment-card h2 {
+            color: #5b2e8f;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .assessment-card ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .assessment-card li {
+            color: #6d3aa3;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .assessment-card li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #5b2e8f;
+        }
+
+        .info-section {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .info-section h2 {
+            color: #5b2e8f;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .info-card h3 {
+            color: #5b2e8f;
+            margin-bottom: 1rem;
+        }
+
+        .info-card p {
+            color: #6d3aa3;
+        }
+
+        footer {
+            text-align: center;
+            color: #6d3aa3;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fitness Assessment</h1>
+            <p>Comprehensive Fitness Evaluation Services</p>
+        </header>
+
+        <div class="assessment-types">
+            <div class="assessment-card">
+                <h2>Body Composition Analysis</h2>
+                <ul>
+                    <li>Body Mass Index (BMI) Measurement</li>
+                    <li>Body Fat Percentage Analysis</li>
+                    <li>Muscle Mass Distribution</li>
+                    <li>Waist-to-Hip Ratio Calculation</li>
+                    <li>Hydration Level Assessment</li>
+                </ul>
+            </div>
+
+            <div class="assessment-card">
+                <h2>Cardiovascular Fitness</h2>
+                <ul>
+                    <li>Resting Heart Rate Measurement</li>
+                    <li>Blood Pressure Screening</li>
+                    <li>VO2 Max Testing</li>
+                    <li>Recovery Rate Analysis</li>
+                    <li>Endurance Capacity Evaluation</li>
+                </ul>
+            </div>
+
+            <div class="assessment-card">
+                <h2>Strength Assessment</h2>
+                <ul>
+                    <li>Upper Body Strength Testing</li>
+                    <li>Lower Body Power Analysis</li>
+                    <li>Core Strength Evaluation</li>
+                    <li>Grip Strength Measurement</li>
+                    <li>Muscular Endurance Testing</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>What to Expect</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Assessment Duration</h3>
+                    <p>Initial assessment takes approximately 60-90 minutes, including consultation and testing procedures.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Preparation</h3>
+                    <p>Wear comfortable athletic clothing and shoes. Avoid heavy meals 2-3 hours before the assessment.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Results & Planning</h3>
+                    <p>Receive detailed results and personalized recommendations based on your fitness goals and current level.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Follow-up</h3>
+                    <p>Regular reassessments available to track progress and adjust fitness programs as needed.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-section">
+            <h2>Additional Services</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Flexibility Testing</h3>
+                    <p>Assessment of joint mobility and muscle flexibility throughout the body.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Movement Screening</h3>
+                    <p>Analysis of movement patterns to identify potential areas of improvement.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Balance Assessment</h3>
+                    <p>Evaluation of static and dynamic balance capabilities.</p>
+                </div>
+
+                <div class="info-card">
+                    <h3>Posture Analysis</h3>
+                    <p>Detailed assessment of standing and seated posture alignment.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Professional fitness assessment services provided by certified trainers</p>
+            <p>Contact us: fitness@example.com | (555) 123-4567</p>
+        </footer>
+    </div>
+</body>
+</html>
