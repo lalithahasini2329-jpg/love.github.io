@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Membership Plans</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #fff6f6 0%, #f9f0ff 100%);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 800px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            background: linear-gradient(to right, #FF9AA2, #C77DFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+        
+        .membership-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 50px;
+            padding: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            max-width: 500px;
+            width: 100%;
+        }
+        
+        .tab {
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+            text-align: center;
+            color: #666;
+        }
+        
+        .tab.active {
+            background: linear-gradient(135deg, #FFAEB9 0%, #C77DFF 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(199, 125, 255, 0.3);
+        }
+        
+        .plans-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .plan {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            width: 340px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .plan:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .gradient-bar {
+            height: 10px;
+        }
+        
+        .basic .gradient-bar {
+            background: linear-gradient(90deg, #FFC0CB, #E6A8D7);
+        }
+        
+        .premium .gradient-bar {
+            background: linear-gradient(90deg, #FFAEB9, #D896FF);
+        }
+        
+        .elite .gradient-bar {
+            background: linear-gradient(90deg, #FF9AA2, #C77DFF);
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FFAEB9 0%, #C77DFF 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(199, 125, 255, 0.3);
+        }
+        
+        .plan-content {
+            padding: 30px;
+        }
+        
+        .plan-name {
+            font-size: 1.4rem;
+            color: #444;
+            margin-bottom: 5px;
+        }
+        
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .plan-price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #888;
+        }
+        
+        .features {
+            margin-bottom: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(135deg, #FFAEB9 0%, #C77DFF 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        
+        .feature-icon:before {
+            content: "✓";
+            color: white;
+            font-size: 0.7rem;
+        }
+        
+        .not-included .feature-icon {
+            background: #e9ecef;
+        }
+        
+        .not-included .feature-icon:before {
+            content: "×";
+            color: #adb5bd;
+        }
+        
+        .not-included {
+            color: #adb5bd;
+        }
+        
+        .buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .btn {
+            padding: 14px 20px;
+            border-radius: 50px;
+            text-align: center;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .service-btn {
+            background: white;
+            color: #C77DFF;
+            border: 2px solid #ffd6e0;
+        }
+        
+        .service-btn:hover {
+            border-color: #FFAEB9;
+            background: #fff5f7;
+        }
+        
+        .pay-btn {
+            background: linear-gradient(135deg, #FFAEB9 0%, #C77DFF 100%);
+            color: white;
+            box-shadow: 0 5px 15px rgba(199, 125, 255, 0.3);
+        }
+        
+        .pay-btn:hover {
+            box-shadow: 0 8px 20px rgba(199, 125, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .plan {
+                width: 100%;
+                max-width: 380px;
+            }
+            
+            .header h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Choose Your Membership</h1>
+        <p>Unlock exclusive benefits with our premium membership plans. Choose the one that fits your needs.</p>
+    </div>
+    
+    <div class="membership-tabs">
+        <div class="tab active" id="monthly">Monthly</div>
+        <div class="tab" id="yearly">Yearly (Save 20%)</div>
+    </div>
+    
+    <div class="plans-container">
+        <!-- Basic Plan -->
+        <div class="plan basic">
+            <div class="gradient-bar"></div>
+            <div class="plan-content">
+                <h2 class="plan-name">Basic</h2>
+                <div class="plan-price">3000/- <span>/month</span></div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>Access to basic features</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>24/7 customer support</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>Up to 2 user accounts</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>10GB storage space</div>
+                    </div>
+                    <div class="feature not-included">
+                        <div class="feature-icon"></div>
+                        <div>Advanced analytics</div>
+                    </div>
+                    <div class="feature not-included">
+                        <div class="feature-icon"></div>
+                        <div>Custom integrations</div>
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <a href="SERVICE PAGE.HTML" class="btn service-btn">View Services</a>
+                    <a href="pay.html" class="btn pay-btn">Pay Now</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Premium Plan -->
+        <div class="plan premium">
+            <div class="gradient-bar"></div>
+            <div class="popular-tag">Most Popular</div>
+            <div class="plan-content">
+                <h2 class="plan-name">Premium</h2>
+                <div class="plan-price">6000/- <span>/month</span></div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>All Basic features</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>Priority customer support</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>Up to 5 user accounts</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>50GB storage space</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>Advanced analytics</div>
+                    </div>
+                    <div class="feature not-included">
+                        <div class="feature-icon"></div>
+                        <div>Custom integrations</div>
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <a href="SERVICE PAGE.HTML" class="btn service-btn">View Services</a>
+                    <a href="pay.html" class="btn pay-btn">Pay Now</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Elite Plan -->
+        <div class="plan elite">
+            <div class="gradient-bar"></div>
+            <div class="plan-content">
+                <h2 class="plan-name">VIP</h2>
+                <div class="plan-price">8000/-<span>/month</span></div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>All Premium features</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>Dedicated account manager</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>Unlimited user accounts</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>200GB storage space</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>Advanced analytics</div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon"></div>
+                        <div>Custom integrations</div>
+                    </div>
+                </div>
+                
+                <div class="buttons">
+                    <a href="PREM.HTML" class="btn service-btn">View Services</a>
+                    <a href="pay.html" class="btn pay-btn">Pay Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab switching functionality
+            const tabs = document.querySelectorAll('.tab');
+            const plans = document.querySelectorAll('.plan');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Update pricing based on selected tab
+                    const isYearly = this.id === 'yearly';
+                    
+                    if (isYearly) {
+                        // Update prices
+                        document.querySelector('.basic .plan-price').innerHTML = '$15 <span>/month</span>';
+                        document.querySelector('.premium .plan-price').innerHTML = '$39 <span>/month</span>';
+                        document.querySelector('.elite .plan-price').innerHTML = '$79 <span>/month</span>';
+                        
+                        // Update payment links with yearly pricing
+                        document.querySelector('.basic .pay-btn').href = "checkout.html?plan=basic&price=15&billing=yearly";
+                        document.querySelector('.premium .pay-btn').href = "checkout.html?plan=premium&price=39&billing=yearly";
+                        document.querySelector('.elite .pay-btn').href = "checkout.html?plan=elite&price=79&billing=yearly";
+                    } else {
+                        // Update prices
+                        document.querySelector('.basic .plan-price').innerHTML = '$19 <span>/month</span>';
+                        document.querySelector('.premium .plan-price').innerHTML = '$49 <span>/month</span>';
+                        document.querySelector('.elite .plan-price').innerHTML = '$99 <span>/month</span>';
+                        
+                        // Update payment links with monthly pricing
+                        document.querySelector('.basic .pay-btn').href = "checkout.html?plan=basic&price=19&billing=monthly";
+                        document.querySelector('.premium .pay-btn').href = "checkout.html?plan=premium&price=49&billing=monthly";
+                        document.querySelector('.elite .pay-btn').href = "checkout.html?plan=elite&price=99&billing=monthly";
+                    }
+                });
+            });
+            
+            // Animation on load
+            setTimeout(() => {
+                plans.forEach((plan, index) => {
+                    setTimeout(() => {
+                        plan.style.opacity = '1';
+                        plan.style.transform = 'translateY(0)';
+                    }, index * 200);
+                });
+            }, 300);
+        });
+    </script>
+</body>
+</html>
