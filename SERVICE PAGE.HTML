@@ -1,1 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Zone Fitness Classes</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
 
+        body {
+            background: #f8f4ff;
+            min-height: 100vh;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #ff758c, #764ba2);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -3rem auto 2rem;
+            padding: 0 2rem;
+        }
+
+        .filters {
+            background: white;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f4ff;
+            color: #764ba2;
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #ff758c, #764ba2);
+            color: white;
+        }
+
+        .class-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .class-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .class-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .class-banner {
+            height: 160px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .class-content {
+            padding: 1.5rem;
+        }
+
+        .class-type {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #f8f4ff;
+            color: #764ba2;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .class-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .instructor {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .instructor-name {
+            color: #666;
+        }
+
+        .class-details {
+            margin: 1.5rem 0;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .features {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+
+        .feature {
+            background: #f8f4ff;
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            color: #764ba2;
+        }
+
+        .book-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ff758c, #764ba2);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-btn:hover {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+                margin-top: -2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .class-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Energy Zone Classes</h1>
+        <p>Discover Your Perfect Workout</p>
+    </div>
+
+    <div class="container">
+        <div class="filters">
+            <button class="filter-btn active">All Classes</button>
+            <button class="filter-btn">Cardio</button>
+            <button class="filter-btn">Strength</button>
+            <button class="filter-btn">Yoga</button>
+            <button class="filter-btn">HIIT</button>
+            <button class="filter-btn">Dance</button>
+        </div>
+
+        <div class="class-grid" id="classGrid"></div>
+    </div>
+
+    <script>
+        const classes = [
+            {
+                title: "Power Yoga",
+                type: "Yoga",
+                instructor: "Sarah Chen",
+                description: "Dynamic yoga flow combining strength and flexibility training with mindful movement and breathing techniques.",
+                features: ["All Levels", "Mind & Body", "Low Impact"],
+                difficulty: "Moderate",
+                icon: "🧘‍♀️"
+            },
+            {
+                title: "HIIT Fusion",
+                type: "HIIT",
+                instructor: "Mike Rodriguez",
+                description: "High-intensity interval training that combines cardio bursts with strength exercises for maximum results.",
+                features: ["High Intensity", "Cardio", "Strength"],
+                difficulty: "Advanced",
+                icon: "💪"
+            },
+            {
+                title: "Dance Cardio",
+                type: "Dance",
+                instructor: "Elena Rivera",
+                description: "Fun, high-energy dance workout that combines popular dance styles with effective cardio movements.",
+                features: ["Beginner Friendly", "Cardio", "Fun"],
+                difficulty: "Beginner",
+                icon: "💃"
+            },
+            {
+                title: "Core & More",
+                type: "Strength",
+                instructor: "James Wilson",
+                description: "Targeted core workout that also engages full body strength training for complete fitness.",
+                features: ["Core Focus", "Strength", "Toning"],
+                difficulty: "Moderate",
+                icon: "🎯"
+            }
+        ];
+
+        function createClassCard(classInfo) {
+            return `
+                <div class="class-card">
+                    <div class="class-banner">
+                        ${classInfo.icon}
+                    </div>
+                    <div class="class-content">
+                        <span class="class-type">${classInfo.type}</span>
+                        <h3 class="class-title">${classInfo.title}</h3>
+
+                        <p class="class-details">${classInfo.description}</p>
+                        
+                        <div class="features">
+                            ${classInfo.features.map(feature => 
+                                `<span class="feature">${feature}</span>`
+                            ).join('')}
+                        </div>
+
+                        <button class="book-btn">Join Class</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function initializeClasses() {
+            const classGrid = document.getElementById('classGrid');
+            classes.forEach(classInfo => {
+                classGrid.innerHTML += createClassCard(classInfo);
+            });
+
+            // Add click handlers
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-btn').forEach(btn => 
+                        btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                });
+            });
+
+            document.querySelectorAll('.book-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('Class registration coming soon!');
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeClasses);
+    </script>
+</body>
+</html>
