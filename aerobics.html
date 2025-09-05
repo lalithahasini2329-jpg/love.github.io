@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AeroFit - Modern Aerobics Training</title>
+    <style>
+        :root {
+            --peach: #FFB6C1;
+            --pink: #FF69B4;
+            --purple: #BA55D3;
+            --light-peach: #FFE4E1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: var(--light-peach);
+        }
+
+        .banner {
+            height: 100vh;
+            background: linear-gradient(135deg, var(--peach), var(--pink), var(--purple)),
+                        url('/api/placeholder/1920/1080');
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .banner-content h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(186,85,211,0.2);
+            z-index: 1000;
+        }
+
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--purple);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--pink);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .flex-container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(186,85,211,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .featured {
+            background: linear-gradient(45deg, var(--peach), var(--pink));
+            color: white;
+        }
+
+        .featured .card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            color: white;
+        }
+
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .program-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            height: 300px;
+            box-shadow: 0 4px 6px rgba(186,85,211,0.2);
+        }
+
+        .program-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .program-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(186,85,211,0.9));
+            color: white;
+            padding: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .program-card:hover .program-info {
+            transform: translateY(0);
+        }
+
+        .cta {
+            text-align: center;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
+            color: white;
+            padding: 4rem 2rem;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: var(--purple);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            background: var(--light-peach);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(186,85,211,0.1);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            color: var(--purple);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .featured h2 {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .banner-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="banner" id="home">
+        <div class="banner-content">
+            <h1>Transform Your Life</h1>
+            <p>Experience the power of modern aerobics training</p>
+            <a href="#programs" class="button">Explore Programs</a>
+        </div>
+    </div>
+
+    <section id="programs" class="section">
+        <div class="container">
+            <h2>Our Programs</h2>
+            <div class="program-grid">
+                <div class="program-card">
+                    <img src="https://media.istockphoto.com/id/671211746/photo/training-class.jpg?s=612x612&w=0&k=20&c=_n_-6W_qlFiJQQWbOl8eIXDtlLJfG9Ikzg7yDpNQn8I=" alt="High-Intensity Aerobics">
+                    <div class="program-info">
+                        <h3>High-Intensity Aerobics</h3>
+                        <p>Maximum calorie burn and cardiovascular fitness</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://media.istockphoto.com/id/517963642/photo/group-of-athletic-people-exercising-step-aerobics-in-a-gym.jpg?s=612x612&w=0&k=20&c=QE4FJldP9ohhWC582QmQdFWaA9zioR0lPibF7JUsbr8=" alt="Step Aerobics">
+                    <div class="program-info">
+                        <h3>Step Aerobics</h3>
+                        <p>Classic stepping routines with modern twists</p>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <img src="https://media.istockphoto.com/id/1437503915/photo/womens-aerobics-class.jpg?s=612x612&w=0&k=20&c=rMDnMkG9qPg-tPG4ZrZFbZC1W11PjYKQ8-yYqz1J6LQ=" alt="Dance Aerobics">
+                    <div class="program-info">
+                        <h3>Dance Aerobics</h3>
+                        <p>Fun choreography meets intense cardio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="benefits" class="section featured">
+        <div class="container">
+            <h2>Why Choose Us?</h2>
+            <div class="flex-container">
+                <div class="card">
+                    <h3>Expert Instructors</h3>
+                    <p>Our certified trainers bring years of experience and passion to every class, ensuring you get the most effective workout while maintaining proper form.</p>
+                </div>
+                <div class="card">
+                    <h3>Varied Programs</h3>
+                    <p>From high-intensity cardio to low-impact exercises, we offer programs suitable for all fitness levels and goals.</p>
+                </div>
+                <div class="card">
+                    <h3>Modern Facilities</h3>
+                    <p>State-of-the-art equipment, spacious workout areas, and premium amenities to enhance your fitness experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stats" class="section">
+        <div class="container">
+            <h2>Our Impact</h2>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <p>Happy Members</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">20+</div>
+                    <p>Expert Trainers</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <p>Weekly Classes</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <p>Success Rate</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="section">
+        <div class="container">
+            <h2>Class Schedule</h2>
+            <div class="flex-container">
+                <div class="card">
+                    <h3>Morning Sessions</h3>
+                    <ul>
+                        <li>6:00 AM - High Intensity</li>
+                        <li>8:00 AM - Step Aerobics</li>
+                        <li>10:00 AM - Dance Aerobics</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Evening Sessions</h3>
+                    <ul>
+                        <li>4:00 PM - Dance Aerobics</li>
+                        <li>6:00 PM - High Intensity</li>
+                        <li>8:00 PM - Step Aerobics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Start Your Fitness Journey Today</h2>
+            <p>Join our community and transform your life with our expert-led aerobics programs</p>
+            <a href="#contact" class="button">Get Started</a>
+        </div>
+    </section>
+</body>
+</html>
