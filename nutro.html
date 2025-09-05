@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #FFDAB9, #FDB4BF, #E6A8D7, #B19CD9);
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nutrition-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #6B4E71;
+            margin: 0;
+        }
+
+        h2 {
+            color: #8B6B8B;
+            margin-top: 0;
+        }
+
+        .highlight {
+            color: #9B4F96;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Daily Nutrition Guide</h1>
+            <p>Your path to a healthier lifestyle starts here</p>
+        </div>
+
+        <div class="card">
+            <h2>Recommended Daily Intake</h2>
+            <div class="nutrition-grid">
+                <div class="stat-box">
+                    <h3>Calories</h3>
+                    <p class="highlight">2000-2500</p>
+                    <p>Based on average adult needs</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Protein</h3>
+                    <p class="highlight">50-60g</p>
+                    <p>Essential for muscle growth</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Carbohydrates</h3>
+                    <p class="highlight">225-325g</p>
+                    <p>Primary energy source</p>
+                </div>
+                <div class="stat-box">
+                    <h3>Healthy Fats</h3>
+                    <p class="highlight">44-77g</p>
+                    <p>Important for brain health</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Key Nutrients to Focus On</h2>
+            <ul>
+                <li><strong>Fiber:</strong> 25-30g daily for digestive health</li>
+                <li><strong>Vitamin D:</strong> 600-800 IU for bone health</li>
+                <li><strong>Iron:</strong> 18mg for energy and blood health</li>
+                <li><strong>Calcium:</strong> 1000mg for strong bones and teeth</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Healthy Eating Tips</h2>
+            <ol>
+                <li>Eat a rainbow of fruits and vegetables daily</li>
+                <li>Choose whole grains over refined grains</li>
+                <li>Include lean proteins in every meal</li>
+                <li>Stay hydrated with 8 glasses of water daily</li>
+                <li>Limit processed foods and added sugars</li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>
