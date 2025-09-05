@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zumba Fitness - Dance Your Way to Health</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFDAB9, #FF69B4, #9370DB);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0.5rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FF69B4;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 15px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #9370DB;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature-card img {
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #FF69B4, #9370DB);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        .schedule {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 15px;
+        }
+
+        .schedule h2 {
+            color: #9370DB;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Zumba</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#classes">Classes</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Dance Your Way to Fitness!</h1>
+            <p>Join our energetic Zumba classes and experience the perfect blend of fun and fitness</p>
+            <a href="#classes" class="cta-button">Join Now</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>Beginner Friendly</h3>
+                <p>No dance experience needed! Our instructors will guide you through every step.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Burn Calories</h3>
+                <p>Burn up to 800 calories per class while having fun with Latin-inspired dance moves!</p>
+            </div>
+            <div class="feature-card">
+                <h3>Join Our Community</h3>
+                <p>Be part of our vibrant community and make new friends while getting fit!</p>
+            </div>
+        </section>
+
+        <section class="schedule">
+            <h2>Class Schedule</h2>
+            <table>
+                <tr>
+                    <th>Time</th>
+                    <th>Monday</th>
+                    <th>Wednesday</th>
+                    <th>Friday</th>
+                    <th>Saturday</th>
+                </tr>
+                <tr>
+                    <td>9:00 AM</td>
+                    <td>Zumba Basic</td>
+                    <td>Zumba Gold</td>
+                    <td>Zumba Basic</td>
+                    <td>Zumba Strong</td>
+                </tr>
+                <tr>
+                    <td>6:00 PM</td>
+                    <td>Zumba Strong</td>
+                    <td>Zumba Toning</td>
+                    <td>Zumba Party</td>
+                    <td>-</td>
+                </tr>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>Contact us: info@zumbafitness.com | (555) 123-4567</p>
+        <p>123 Dance Street, Fitness City, FC 12345</p>
+    </footer>
+</body>
+</html>
