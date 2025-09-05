@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Body Transformation | Energy Zone Gym</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #FFCBA4, #FF85A2, #B96AC9);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(to right, #FF85A2, #B96AC9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero {
+            height: 600px;
+            display: flex;
+            align-items: center;
+            background: url('/api/placeholder/1200/600') center/cover;
+            position: relative;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 203, 164, 0.7), rgba(255, 133, 162, 0.7), rgba(185, 106, 201, 0.7));
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            max-width: 600px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, #FF85A2, #B96AC9);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 50px;
+            color: #444;
+            position: relative;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #FF85A2, #B96AC9);
+        }
+        
+        .transformation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .transformation-card {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .transformation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .transformation-image {
+            height: 250px;
+            background: url('/api/placeholder/400/250') center/cover;
+            position: relative;
+        }
+        
+        .transformation-details {
+            padding: 20px;
+        }
+        
+        .transformation-details h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .transformation-details p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        .programs {
+            background-color: #f9f9f9;
+        }
+        
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        .program-details {
+            padding: 20px;
+        }
+        
+        .program-details h3 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 22px;
+        }
+        
+        .program-details ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .program-details ul li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .program-details ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #B96AC9;
+        }
+        
+        .program-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF85A2;
+            margin-bottom: 15px;
+        }
+        
+        .testimonials {
+            background: linear-gradient(135deg, #FFCBA4, #FF85A2, #B96AC9);
+            color: white;
+        }
+        
+        .testimonials h2 {
+            color: white;
+        }
+        
+        .testimonials h2::after {
+            background: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            color: #333;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-details h4 {
+            margin-bottom: 5px;
+        }
+        
+        .cta {
+            text-align: center;
+            padding: 100px 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600') center/cover;
+            color: white;
+        }
+        
+        .cta h2 {
+            color: white;
+            margin-bottom: 30px;
+        }
+        
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+        }
+        
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, #FF85A2, #B96AC9);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #FF85A2;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #FF85A2;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+        }
+        
+        @media (max-width: 768px) {            
+            .hero {
+                height: 500px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            section h2 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform Your Body, Transform Your Life</h1>
+                <p>Join Energy Zone's proven transformation programs and achieve the body you've always dreamed of. Our expert trainers and customized nutrition plans will help you reach your goals faster than ever before.</p>
+                <a href="#contact" class="btn">Start Your Journey Today</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Transformations -->
+    <section id="transformations" class="transformations">
+        <div class="container">
+            <h2>Real Transformations</h2>
+            <div class="transformation-grid">
+                <div class="transformation-card">
+                    <div class="transformation-details">
+                        <h3>Sarah's Journey</h3>
+                        <p>Lost 30 pounds and gained confidence in just 12 weeks with our Advanced Fat Loss program.</p>
+                        <div class="stats">
+                            <span>-30 lbs</span>
+                            <span>-15% Body Fat</span>
+                            <span>12 Weeks</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="transformation-card">
+                    <div class="transformation-details">
+                        <h3>Mike's Progress</h3>
+                        <p>Gained 20 pounds of lean muscle and transformed his physique with our Muscle Building program.</p>
+                        <div class="stats">
+                            <span>+20 lbs Muscle</span>
+                            <span>-8% Body Fat</span>
+                            <span>16 Weeks</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="transformation-card">
+                    <div class="transformation-details">
+                        <h3>Lisa's Success</h3>
+                        <p>Completely reshaped her body and improved her overall health with our Total Body Recomposition.</p>
+                        <div class="stats">
+                            <span>-22 lbs</span>
+                            <span>-12% Body Fat</span>
+                            <span>14 Weeks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Programs -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <h2>Transformation Programs</h2>
+            <div class="program-grid">
+                <div class="program-card">
+                    <div class="program-details">
+                        <h3>Fat Loss Accelerator</h3>
+                        <ul>
+                            <li>Customized Nutrition Plan</li>
+                            <li>3x Weekly Training Sessions</li>
+                            <li>Weekly Check-ins</li>
+                            <li>24/7 Coach Support</li>
+                            <li>12-Week Duration</li>
+                        </ul>
+                        <div class="program-price">599/-per month</div>
+                        <a href="contact1.html" class="btn">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-details">
+                        <h3>Muscle Building </h3>
+                        <ul>
+                            <li>High-Protein Diet Plan</li>
+                            <li>4x Weekly Training Sessions</li>
+                            <li>Progressive Overload Tracking</li>
+                            <li>Supplement Guidance</li>
+                            <li>16-Week Duration</li>
+                        </ul>
+                        <div class="program-price">649/- per month</div>
+                        <a href="contact1.html" class="btn">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-details">
+                        <h3>Total Body Recomposition</h3>
+                        <ul>
+                            <li>Macro-Based Nutrition</li>
+                            <li>5x Weekly Training Sessions</li>
+                            <li>Body Composition Analysis</li>
+                            <li>Recovery Protocols</li>
+                            <li>14-Week Duration</li>
+                        </ul>
+                        <div class="program-price">799/-per month</div>
+                        <a href="contact1.html" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Success Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Energy Zone completely changed my life. The trainers are amazing and the personalized approach to nutrition made all the difference. I never thought I could achieve these results!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-details">
+                            <h4>Jennifer D.</h4>
+                            <p>Lost 35 lbs in 14 weeks</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "After trying countless programs with little success, Energy Zone's transformation program finally helped me build the muscle I've always wanted. The coaches really know their stuff!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-details">
+                            <h4>David R.</h4>
+                            <p>Gained 15 lbs of muscle in 12 weeks</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The accountability and support from the Energy Zone team kept me motivated throughout my journey. The results speak for themselves - I'm in the best shape of my life at 45!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-details">
+                            <h4>Michelle T.</h4>
+                            <p>Total body transformation in 16 weeks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Energy Zone</h3>
+                    <p>Where transformations happen daily. Our expert coaches are ready to help you achieve the body of your dreams.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#transformations">Transformations</a></li>
+                        <li><a href="#programs">Programs</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li>123 Fitness Street</li>
+                        <li>Workout City, WC 12345</li>
+                        <li>Phone: (555) 123-4567</li>
+                        <li>Email: info@energyzone.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#">F</a>
+                        <a href="#">I</a>
+                        <a href="#">T</a>
+                        <a href="#">Y</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 Energy Zone Gym. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
