@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Personal Training</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #ff69b4, #9370db);
+            color: white;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ffd700;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .hero h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ffd700;
+            color: #333;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        .testimonials {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Elite Personal Training</h1>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h2>Transform Your Life Today</h2>
+            <p>Expert personal training tailored to your goals and lifestyle</p>
+            <br>
+            <a href="#contact" class="cta-button">Start Your Journey</a>
+        </section>
+
+        <section class="services">
+            <div class="service-card">
+                <h3>1-on-1 Training</h3>
+                <p>Personalized workout plans and dedicated attention to help you achieve your fitness goals faster.</p>
+            </div>
+            <div class="service-card">
+                <h3>Nutrition Coaching</h3>
+                <p>Custom meal plans and nutritional guidance to complement your fitness journey.</p>
+            </div>
+            <div class="service-card">
+                <h3>Group Sessions</h3>
+                <p>High-energy group workouts that combine motivation with results-driven exercises.</p>
+            </div>
+        </section>
+
+        <section class="testimonials">
+            <h2>Client Success Stories</h2>
+            <div class="testimonial-card">
+                <p>"I've achieved results I never thought possible. The personalized attention and motivation made all the difference!"</p>
+                <strong>- Sarah M.</strong>
+            </div>
+            <div class="testimonial-card">
+                <p>"The nutrition guidance alongside the workouts helped me completely transform my lifestyle. Highly recommended!"</p>
+                <strong>- James R.</strong>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Elite Personal Training. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
