@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Massage Therapy Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffd1d1, #e6a8e8, #d5a6e6);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            color: #5b2e8f;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #6d3aa3;
+            font-size: 1.2rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: #5b2e8f;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: #6d3aa3;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #5b2e8f;
+            margin-bottom: 1rem;
+        }
+
+        .booking-section {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #5b2e8f;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d5a6e6;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        button {
+            background-color: #6d3aa3;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #5b2e8f;
+        }
+
+        .therapists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .therapist-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .therapist-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background: #d5a6e6;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        footer {
+            text-align: center;
+            color: #6d3aa3;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Massage Therapy</h1>
+            <p>Relax, Rejuvenate, Restore</p>
+        </header>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Swedish Massage</h3>
+                <p>A gentle, relaxing massage that uses long strokes, kneading, and circular movements to ease tension.</p>
+                <p class="price">60 min - $85</p>
+                <button onclick="bookService('Swedish Massage')">Book Now</button>
+            </div>
+
+            <div class="service-card">
+                <h3>Deep Tissue Massage</h3>
+                <p>Targets deep muscle layers to release chronic muscle tension and reduce pain.</p>
+                <p class="price">60 min - $95</p>
+                <button onclick="bookService('Deep Tissue Massage')">Book Now</button>
+            </div>
+
+            <div class="service-card">
+                <h3>Hot Stone Massage</h3>
+                <p>Combines heated stones with massage techniques for deep relaxation and healing.</p>
+                <p class="price">90 min - $120</p>
+                <button onclick="bookService('Hot Stone Massage')">Book Now</button>
+            </div>
+        </div>
+
+        <div class="booking-section" id="bookingForm" style="display: none;">
+            <h2 style="color: #5b2e8f; margin-bottom: 1.5rem;">Book Your Session</h2>
+            <form class="booking-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Preferred Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Preferred Time</label>
+                    <input type="time" id="time" required>
+                </div>
+                <div class="form-group">
+                    <label for="therapist">Select Therapist</label>
+                    <select id="therapist" required>
+                        <option value="sarah">Sarah Johnson</option>
+                        <option value="michael">Michael Chen</option>
+                        <option value="emma">Emma Davis</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Special Notes</label>
+                    <textarea id="notes" rows="3"></textarea>
+                </div>
+                <button type="submit">Confirm Booking</button>
+            </form>
+        </div>
+
+        <div class="therapists-grid">
+            <div class="therapist-card">
+                <div class="therapist-image">SJ</div>
+                <h3>Sarah Johnson</h3>
+                <p>Specialized in Swedish Massage</p>
+            </div>
+
+            <div class="therapist-card">
+                <div class="therapist-image">MC</div>
+                <h3>Michael Chen</h3>
+                <p>Deep Tissue Expert</p>
+            </div>
+
+            <div class="therapist-card">
+                <div class="therapist-image">ED</div>
+                <h3>Emma Davis</h3>
+                <p>Hot Stone Specialist</p>
+            </div>
+        </div>
+
+        <footer>
+            <p>Contact us at (555) 123-4567 | info@massagetherapy.com</p>
+            <p>Open 7 days a week | 9:00 AM - 8:00 PM</p>
+        </footer>
+    </div>
+
+    <script>
+        function bookService(service) {
+            const bookingForm = document.getElementById('bookingForm');
+            bookingForm.style.display = 'block';
+            bookingForm.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            alert(`Thank you ${name}! Your massage has been booked for ${date} at ${time}. We'll send a confirmation email shortly.`);
+            event.target.reset();
+            document.getElementById('bookingForm').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
