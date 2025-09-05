@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strength Zone</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        :root {
+            --gradient-1: linear-gradient(135deg, #ffd1d1, #e0c3fc, #ffd1d1);
+            --gradient-2: linear-gradient(45deg, #ffb6b6, #ffc8e6, #e5c9ff);
+            --gradient-3: linear-gradient(to right, #ffd1d1, #e0c3fc);
+            --card-shadow: 0 8px 20px rgba(224, 195, 252, 0.3);
+        }
+
+        body {
+            background: var(--gradient-1);
+            min-height: 100vh;
+        }
+
+        .hero {
+            height: 500px;
+            background: var(--gradient-2);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            color: #6b46c1;
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section {
+            margin-bottom: 6rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #6b46c1;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-3);
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-content h3 {
+            color: #6b46c1;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .equipment-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .equipment-item {
+            background: rgba(224, 195, 252, 0.2);
+            padding: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .equipment-icon {
+            font-size: 2rem;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .trainer-card {
+            text-align: center;
+        }
+
+        .trainer-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .schedule-table th,
+        .schedule-table td {
+            padding: 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(107, 70, 193, 0.2);
+        }
+
+        .schedule-table th {
+            background: rgba(224, 195, 252, 0.3);
+            color: #6b46c1;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .program-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .program-icon {
+            font-size: 2rem;
+            color: #6b46c1;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .section {
+                margin-bottom: 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Strength Zone 💪</h1>
+            <p>Build strength, gain muscle, and achieve your fitness goals with our state-of-the-art equipment and expert guidance</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title">Training Areas</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://media.istockphoto.com/id/1303065420/photo/empty-gym.jpg?s=612x612&w=0&k=20&c=ivelWvaMIUHlyST6DYhPhp_h7xSK8q4XmdL-5TqcXTA=" alt="Free Weights Area" class="card-image">
+                    <div class="card-content">
+                        <h3>🏋️‍♂️ Free Weights Area</h3>
+                        <p>Comprehensive selection of dumbbells (2-50kg), barbells, and weight plates for versatile strength training.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://media.istockphoto.com/id/1279000074/photo/modern-gym-with-sports-equipment.jpg?s=612x612&w=0&k=20&c=AAnw1V2Pyvkb5lPLw6BYQ8MxhxfGHI5lwnI5TtTv4Rc=" alt="Machine Zone" class="card-image">
+                    <div class="card-content">
+                        <h3>🎯 Machine Zone</h3>
+                        <p>Latest strength training machines targeting every muscle group with adjustable resistance systems.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://media.istockphoto.com/id/1405572693/photo/personal-training-studio-with-barbell-dumbbells-exercise-bike-and-garden-view-from-the-window.jpg?s=612x612&w=0&k=20&c=6NLBH6P9FV50SoblrEpiCE5VZmLtAyIvyN-v6XHjbzM=" alt="Functional Area" class="card-image">
+                    <div class="card-content">
+                        <h3>⚡ Functional Area</h3>
+                        <p>Dedicated space for functional training with kettlebells, resistance bands, and bodyweight exercises.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Available Equipment</h2>
+            <div class="equipment-list">
+                <div class="equipment-item">
+                    <span class="equipment-icon">🏋️‍♂️</span>
+                    <div>
+                        <h3>Power Racks</h3>
+                        <p>6 professional power racks with safety spotters</p>
+                    </div>
+                </div>
+                <div class="equipment-item">
+                    <span class="equipment-icon">💪</span>
+                    <div>
+                        <h3>Smith Machines</h3>
+                        <p>4 advanced Smith machines for controlled lifting</p>
+                    </div>
+                </div>
+                <div class="equipment-item">
+                    <span class="equipment-icon">🎯</span>
+                    <div>
+                        <h3>Cable Machines</h3>
+                        <p>8 dual-pulley cable stations</p>
+                    </div>
+                </div>
+                <div class="equipment-item">
+                    <span class="equipment-icon">⚡</span>
+                    <div>
+                        <h3>Isolation Machines</h3>
+                        <p>Full range of isolation equipment for targeted training</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Training Programs</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-content">
+                        <h3>🎯 Beginner's Program</h3>
+                        <ul>
+                            <li>Proper form and technique training</li>
+                            <li>Introduction to basic exercises</li>
+                            <li>Gradual progression plan</li>
+                            <li>Safety guidelines and protocols</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>💪 Strength Building</h3>
+                        <ul>
+                            <li>Progressive overload training</li>
+                            <li>Compound movement focus</li>
+                            <li>Periodization programs</li>
+                            <li>Performance tracking</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <h3>🏆 Advanced Training</h3>
+                        <ul>
+                            <li>Specialized lifting techniques</li>
+                            <li>Competition preparation</li>
+                            <li>Advanced programming</li>
+                            <li>Recovery strategies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Expert Trainers</h2>
+            <div class="grid">
+                <div class="card trainer-card">
+                    <img src="https://media.istockphoto.com/id/1018043738/photo/portrait-of-chinese-personal-trainer-in-gym.jpg?s=612x612&w=0&k=20&c=BpuYao5G3qr5SG7IUq15CESYHxunuvz66qfnDKJfX9s=" alt="Trainer 1" class="trainer-image">
+                    <div class="card-content">
+                        <h3>Mike Johnson</h3>
+                        <p>Strength & Conditioning Specialist</p>
+                        <p>12+ years experience</p>
+                        <p>Competition powerlifting background</p>
+                    </div>
+                </div>
+                <div class="card trainer-card">
+                    <img src="https://media.istockphoto.com/id/1180062918/photo/portrait-of-sportswoman.jpg?s=612x612&w=0&k=20&c=YtQeiczB5ZOiSvT6Qp29VcjQRANyvAXZoMgY49Ghuf8=" alt="Trainer 2" class="trainer-image">
+                    <div class="card-content">
+                        <h3>Lisa Chen</h3>
+                        <p>Olympic Weightlifting Coach</p>
+                        <p>8+ years experience</p>
+                        <p>Former national competitor</p>
+                    </div>
+                </div>
+                <div class="card trainer-card">
+                    <img src="https://media.istockphoto.com/id/1324042769/photo/confident-gym-owner.jpg?s=612x612&w=0&k=20&c=2ARveP6nctKY2V1180dCOXS7yJrZjRg-TTIDkazond8=" alt="Trainer 3" class="trainer-image">
+                    <div class="card-content">
+                        <h3>David Smith</h3>
+                        <p>Body Composition Specialist</p>
+                        <p>10+ years experience</p>
+                        <p>Certified nutrition coach</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">Hours & Peak Times</h2>
+            <div class="card">
+                <table class="schedule-table">
+                    <tr>
+                        <th>Day</th>
+                        <th>Hours</th>
+                        <th>Peak Times</th>
+                        <th>Trainer Availability</th>
+                    </tr>
+                    <tr>
+                        <td>Monday - Friday</td>
+                        <td>6:00 AM - 10:00 PM</td>
+                        <td>7:00 AM - 9:00 AM<br>5:00 PM - 8:00 PM</td>
+                        <td>All day by appointment</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>7:00 AM - 8:00 PM</td>
+                        <td>9:00 AM - 1:00 PM</td>
+                        <td>Morning sessions only</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>8:00 AM - 6:00 PM</td>
+                        <td>10:00 AM - 2:00 PM</td>
+                        <td>By special appointment</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
