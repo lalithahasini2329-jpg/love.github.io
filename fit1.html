@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffd1d1, #e6a8e8, #d5a6e6);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            color: #5b2e8f;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #6d3aa3;
+            font-size: 1.2rem;
+        }
+
+        .assessment-form {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #5b2e8f;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d5a6e6;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .results-section {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .metric-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .metric-card h3 {
+            color: #5b2e8f;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            color: #6d3aa3;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #6d3aa3;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #5b2e8f;
+        }
+
+        .recommendations {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            display: none;
+        }
+
+        .recommendation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .recommendation-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .recommendation-card h3 {
+            color: #5b2e8f;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            color: #6d3aa3;
+            padding: 2rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Fitness Assessment</h1>
+            <p>Complete your assessment to receive personalized recommendations</p>
+        </header>
+
+        <div class="assessment-form">
+            <form id="fitnessForm" onsubmit="calculateFitness(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" required min="18" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" required step="0.1">
+                    </div>
+                    <div class="form-group">
+                        <label for="height">Height (cm)</label>
+                        <input type="number" id="height" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" required>
+                            <option value="">Select gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="activity">Activity Level</label>
+                        <select id="activity" required>
+                            <option value="">Select activity level</option>
+                            <option value="sedentary">Sedentary</option>
+                            <option value="light">Lightly Active</option>
+                            <option value="moderate">Moderately Active</option>
+                            <option value="very">Very Active</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="goals">Fitness Goals</label>
+                        <select id="goals" required>
+                            <option value="">Select primary goal</option>
+                            <option value="weight-loss">Weight Loss</option>
+                            <option value="muscle-gain">Muscle Gain</option>
+                            <option value="endurance">Endurance</option>
+                            <option value="flexibility">Flexibility</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" style="margin-top: 1.5rem; width: 100%;">Calculate Results</button>
+            </form>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <h2 style="color: #5b2e8f; margin-bottom: 1.5rem;">Your Fitness Assessment Results</h2>
+            <div class="metric-cards">
+                <div class="metric-card">
+                    <h3>BMI</h3>
+                    <div class="metric-value" id="bmiValue">-</div>
+                    <p id="bmiCategory">Category: -</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Daily Calories</h3>
+                    <div class="metric-value" id="caloriesValue">-</div>
+                    <p>Recommended intake</p>
+                </div>
+                <div class="metric-card">
+                    <h3>Fitness Level</h3>
+                    <div class="metric-value" id="fitnessLevel">-</div>
+                    <p>Based on activity</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="recommendations" id="recommendationsSection">
+            <h2 style="color: #5b2e8f; margin-bottom: 1.5rem;">Personalized Recommendations</h2>
+            <div class="recommendation-cards">
+                <div class="recommendation-card">
+                    <h3>Exercise Plan</h3>
+                    <div id="exerciseRecommendations"></div>
+                </div>
+                <div class="recommendation-card">
+                    <h3>Nutrition Tips</h3>
+                    <div id="nutritionRecommendations"></div>
+                </div>
+                <div class="recommendation-card">
+                    <h3>Lifestyle Changes</h3>
+                    <div id="lifestyleRecommendations"></div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>For professional medical advice, please consult with your healthcare provider</p>
+            <p>Contact us: fitness@example.com | (555) 123-4567</p>
+        </footer>
+    </div>
+
+    <script>
+        function calculateFitness(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const age = parseInt(document.getElementById('age').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const height = parseInt(document.getElementById('height').value);
+            const gender = document.getElementById('gender').value;
+            const activity = document.getElementById('activity').value;
+            const goals = document.getElementById('goals').value;
+
+            // Calculate BMI
+            const bmi = weight / ((height/100) * (height/100));
+            const bmiValue = document.getElementById('bmiValue');
+            const bmiCategory = document.getElementById('bmiCategory');
+            bmiValue.textContent = bmi.toFixed(1);
+
+            // Determine BMI category
+            let category = '';
+            if (bmi < 18.5) category = 'Underweight';
+            else if (bmi < 25) category = 'Normal weight';
+            else if (bmi < 30) category = 'Overweight';
+            else category = 'Obese';
+            bmiCategory.textContent = `Category: ${category}`;
+
+            // Calculate base calories (Basic BMR using Harris-Benedict equation)
+            let bmr;
+            if (gender === 'male') {
+                bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * age);
+            } else {
+                bmr = 447.593 + (9.247 * weight) + (3.098 * height) - (4.330 * age);
+            }
+
+            // Adjust for activity level
+            const activityMultipliers = {
+                'sedentary': 1.2,
+                'light': 1.375,
+                'moderate': 1.55,
+                'very': 1.725
+            };
+            const calories = bmr * activityMultipliers[activity];
+            document.getElementById('caloriesValue').textContent = Math.round(calories);
+
+            // Set fitness level based on activity
+            const fitnessLevels = {
+                'sedentary': 'Beginner',
+                'light': 'Novice',
+                'moderate': 'Intermediate',
+                'very': 'Advanced'
+            };
+            document.getElementById('fitnessLevel').textContent = fitnessLevels[activity];
+
+            // Generate recommendations based on goals and fitness level
+            generateRecommendations(goals, activity, category);
+
+            // Show results and recommendations
+            document.getElementById('resultsSection').style.display = 'block';
+            document.getElementById('recommendationsSection').style.display = 'block';
+            
+            // Smooth scroll to results
+            document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function generateRecommendations(goals, activity, bmiCategory) {
+            // Exercise recommendations
+            const exerciseRecs = document.getElementById('exerciseRecommendations');
+            const nutritionRecs = document.getElementById('nutritionRecommendations');
+            const lifestyleRecs = document.getElementById('lifestyleRecommendations');
+
+            let exerciseHtml = '<ul style="list-style-type: none;">';
+            let nutritionHtml = '<ul style="list-style-type: none;">';
+            let lifestyleHtml = '<ul style="list-style-type: none;">';
+
+            // Customize recommendations based on goals
+            switch(goals) {
+                case 'weight-loss':
+                    exerciseHtml += `
+                        <li>• 30-45 minutes cardio, 3-5 times per week</li>
+                        <li>• Strength training 2-3 times per week</li>
+                        <li>• High-Intensity Interval Training (HIIT)</li>
+                    `;
+                    nutritionHtml += `
+                        <li>• Create a caloric deficit of 500 calories</li>
+                        <li>• Increase protein intake</li>
+                        <li>• Focus on whole foods</li>
+                    `;
+                    break;
+                case 'muscle-gain':
+                    exerciseHtml += `
+                        <li>• Progressive overload strength training</li>
+                        <li>• Focus on compound exercises</li>
+                        <li>• 3-4 strength sessions per week</li>
+                    `;
+                    nutritionHtml += `
+                        <li>• Increase protein intake (1.6-2.2g/kg)</li>
+                        <li>• Caloric surplus of 300-500 calories</li>
+                        <li>• Time nutrients around workouts</li>
+                    `;
+                    break;
+                // Add more cases for other goals
+            }
+
+            // General lifestyle recommendations
+            lifestyleHtml += `
+                <li>• Get 7-9 hours of sleep per night</li>
+                <li>• Stay hydrated (2-3 liters per day)</li>
+                <li>• Manage stress through meditation/yoga</li>
+            `;
+
+            exerciseHtml += '</ul>';
+            nutritionHtml += '</ul>';
+            lifestyleHtml += '</ul>';
+
+            exerciseRecs.innerHTML = exerciseHtml;
+            nutritionRecs.innerHTML = nutritionHtml;
+            lifestyleRecs.innerHTML = lifestyleHtml;
+        }
+    </script>
+</body>
+</html>
