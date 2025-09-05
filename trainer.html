@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Zone - Our Trainers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: #f8f4ff;
+            min-height: 100vh;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #ff758c, #764ba2);
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -3rem auto 2rem;
+            padding: 0 2rem;
+        }
+
+        .expertise-filters {
+            background: white;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f4ff;
+            color: #764ba2;
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #ff758c, #764ba2);
+            color: white;
+        }
+
+        .trainers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .trainer-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .trainer-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .trainer-image {
+            height: 300px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+        }
+
+        .trainer-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .trainer-content {
+            padding: 1.5rem;
+        }
+
+        .trainer-specialties {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .specialty-tag {
+            background: #f8f4ff;
+            color: #764ba2;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .trainer-name {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .trainer-title {
+            color: #764ba2;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .trainer-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 0.5rem;
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            color: #764ba2;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .trainer-bio {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f8f4ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #764ba2;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: linear-gradient(135deg, #ff758c, #764ba2);
+            color: white;
+        }
+
+        .book-btn {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #ff758c, #764ba2);
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-btn:hover {
+            opacity: 0.9;
+        }
+
+        .certifications {
+            margin: 1rem 0;
+            padding: 1rem;
+            background: #f8f4ff;
+            border-radius: 10px;
+        }
+
+        .certification {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+                margin-top: -2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .trainers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>Meet Our Expert Trainers</h1>
+        <p>Work with passionate professionals who are dedicated to helping you achieve your fitness goals</p>
+    </div>
+
+    <div class="container">
+        <div class="expertise-filters">
+            <button class="filter-btn active">All Trainers</button>
+            <button class="filter-btn">Strength Training</button>
+            <button class="filter-btn">Yoga</button>
+            <button class="filter-btn">HIIT</button>
+            <button class="filter-btn">Dance</button>
+            <button class="filter-btn">Nutrition</button>
+        </div>
+
+        <div class="trainers-grid" id="trainersGrid"></div>
+    </div>
+
+    <script>
+        const trainers = [
+            {
+                name: "Sarah Chen",
+                title: "Senior Yoga Instructor",
+                image: "/api/placeholder/300/300",
+                specialties: ["Yoga", "Meditation", "Flexibility"],
+                bio: "With over 8 years of experience in yoga and mindfulness, Sarah specializes in helping clients achieve both physical and mental wellness through targeted practice.",
+                experience: "8 years",
+                clients: "200+",
+                classes: "1,000+",
+                certifications: [
+                    "RYT 500 Certified",
+                    "Mindfulness Meditation Teacher",
+                    "Pre/Post Natal Yoga Certified"
+                ]
+            },
+            {
+                name: "Mike Rodriguez",
+                title: "Head Strength Coach",
+                image: "/api/placeholder/300/300",
+                specialties: ["Strength Training", "HIIT", "Nutrition"],
+                bio: "Mike brings 10 years of experience in strength training and sports nutrition. His approach combines scientific principles with practical application.",
+                experience: "10 years",
+                clients: "300+",
+                classes: "2,500+",
+                certifications: [
+                    "NASM Certified Trainer",
+                    "Strength & Conditioning Specialist",
+                    "Sports Nutrition Certified"
+                ]
+            },
+            {
+                name: "Elena Rivera",
+                title: "Dance Fitness Expert",
+                image: "/api/placeholder/300/300",
+                specialties: ["Dance", "Cardio", "Flexibility"],
+                bio: "Former professional dancer turned fitness instructor, Elena brings energy and expertise to every session, making fitness fun and effective.",
+                experience: "6 years",
+                clients: "150+",
+                classes: "800+",
+                certifications: [
+                    "Dance Fitness Certified",
+                    "Zumba Instructor",
+                    "Group Fitness Specialist"
+                ]
+            }
+        ];
+
+        function createTrainerCard(trainer) {
+            return `
+                <div class="trainer-card">
+                    <div class="trainer-image">
+                        <img src="${trainer.image}" alt="${trainer.name}">
+                    </div>
+                    <div class="trainer-content">
+                        <div class="trainer-specialties">
+                            ${trainer.specialties.map(specialty => 
+                                `<span class="specialty-tag">${specialty}</span>`
+                            ).join('')}
+                        </div>
+                        
+                        <h3 class="trainer-name">${trainer.name}</h3>
+                        <div class="trainer-title">${trainer.title}</div>
+                        
+                        <p class="trainer-bio">${trainer.bio}</p>
+                        
+                        <div class="trainer-stats">
+                            <div class="stat">
+                                <div class="stat-number">${trainer.experience}</div>
+                                <div class="stat-label">Experience</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">${trainer.clients}</div>
+                                <div class="stat-label">Clients</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">${trainer.classes}</div>
+                                <div class="stat-label">Classes</div>
+                            </div>
+                        </div>
+
+                        <div class="certifications">
+                            ${trainer.certifications.map(cert => 
+                                `<div class="certification">✓ ${cert}</div>`
+                            ).join('')}
+                        </div>
+
+                        <div class="social-links">
+                            <a href="#" class="social-btn">in</a>
+                            <a href="#" class="social-btn">ig</a>
+                            <a href="#" class="social-btn">tw</a>
+                        </div>
+
+                        <button class="book-btn">Book a Session</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function initializeTrainers() {
+            const trainersGrid = document.getElementById('trainersGrid');
+            trainers.forEach(trainer => {
+                trainersGrid.innerHTML += createTrainerCard(trainer);
+            });
+
+            // Add click handlers
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    document.querySelectorAll('.filter-btn').forEach(btn => 
+                        btn.classList.remove('active'));
+                    e.target.classList.add('active');
+                });
+            });
+
+            document.querySelectorAll('.book-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    alert('Booking system coming soon!');
+                });
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', initializeTrainers);
+    </script>
+</body>
+</html>
